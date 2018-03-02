@@ -28,9 +28,9 @@ int closest_to(Iter beg,Iter end,T R)
 }
 
 template<typename Iter>
-int max_odd(Iter beg,Iter end)
+typename iterator_traits<Iter>::value_type max_odd(Iter beg,Iter end)
 {
-  int res=-2147483647;
+  typename iterator_traits<Iter>::value_type res=-2147483647;
   while(beg != end)
   {
     if(*beg%2 && *beg>res)res=*beg;
@@ -51,9 +51,9 @@ unsigned int count_leftmecright(Iter beg,Iter end)
 }
 
 template<typename Iter>
-int min_even(Iter beg,Iter end)
+typename iterator_traits<Iter>::value_type min_even(Iter beg,Iter end)
 {
-  int res=2147483647;
+  typename iterator_traits<Iter>::value_type res=2147483647;
   while(beg != end)
   {
     if(*beg%2==0 && *beg<res)res=*beg;
