@@ -16,27 +16,37 @@ unsigned int count_even_elements(Iter beg,Iter end)
 }
 
 template<typename Iter,typename T>
-int closest_to(Iter beg,Iter end,T R)
+Iter closest_to(Iter beg,Iter end,T R)
 {
-    int res=*beg;
+    auto res=*beg;
+    Iter ans=beg;
     while(beg != end)
     {
-      if(abs(*beg-R)<abs(res-R))res=*beg;
+      if(abs(*beg-R)<abs(res-R))
+      {
+        res=*beg;
+        ans=beg;
+      }
       ++beg;
     }
-    return res;
+    return ans;
 }
 
 template<typename Iter>
-typename iterator_traits<Iter>::value_type max_odd(Iter beg,Iter end)
+Iter max_odd(Iter b, Iter e)
 {
-  typename iterator_traits<Iter>::value_type res=-2147483647;
-  while(beg != end)
-  {
-    if(*beg%2 && *beg>res)res=*beg;
-    ++beg;
-  }
-  return res;
+    auto res = *b;
+    Iter ans=b;
+    while (b != e)
+    {
+        if (*b % 2 && *b>res)
+        {
+          res = *b;
+          ans=b;
+        }
+        ++b;
+    }
+    return ans;
 }
 
 template<typename Iter>
@@ -51,15 +61,20 @@ unsigned int count_leftmecright(Iter beg,Iter end)
 }
 
 template<typename Iter>
-typename iterator_traits<Iter>::value_type min_even(Iter beg,Iter end)
+Iter min_even(Iter b, Iter e)
 {
-  typename iterator_traits<Iter>::value_type res=2147483647;
-  while(beg != end)
-  {
-    if(*beg%2==0 && *beg<res)res=*beg;
-    ++beg;
-  }
-  return res;
+    auto res = *b;
+    Iter ans=b;
+    while (b != e)
+    {
+        if (*b % 2==0 && *b<res)
+        {
+          res = *b;
+          ans=b;
+        }
+        ++b;
+    }
+    return ans;
 }
 
 template<typename Iter>
@@ -122,10 +137,10 @@ int main()
 {
     int a[6]={1,-2,-3,8,5,7};
     cout<<count_even_elements(a,a+6)<<endl;
-    cout<<max_odd(a,a+6)<<endl;
-    cout<<closest_to(a,a+6,4)<<endl;
+    cout<<*max_odd(a,a+6)<<endl;
+    cout<<*closest_to(a,a+6,4)<<endl;
     cout<<count_leftmecright(a,a+6)<<endl;
-    cout<<min_even(a,a+6)<<endl;
+    cout<<*min_even(a,a+6)<<endl;
     cout<<modul_mijin(a,a+6)<<endl;
     cout<<count_mijinicpoqr(a,a+6)<<endl;
     cout<<count_min(a,a+6)<<endl;
