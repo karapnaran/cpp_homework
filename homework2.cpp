@@ -6,6 +6,7 @@ using namespace std;
 template<typename Iter>
 unsigned int count_even_elements(Iter beg,Iter end)
 {
+  if(is_integral<typename iterator_traits<Iter>::value_type>::value==false){return end;}
   unsigned int res=0;
   while(beg != end)
   {
@@ -35,6 +36,7 @@ Iter closest_to(Iter beg,Iter end,T R)
 template<typename Iter>
 Iter max_odd(Iter b, Iter e)
 {
+    if(is_integral<typename iterator_traits<Iter>::value_type>::value==false){return e;}
     auto res = *b;
     Iter ans=b;
     while (b != e)
@@ -63,6 +65,7 @@ unsigned int count_leftmecright(Iter beg,Iter end)
 template<typename Iter>
 Iter min_even(Iter b, Iter e)
 {
+    if(is_integral<typename iterator_traits<Iter>::value_type>::value==false){return e;}
     auto res = *b;
     Iter ans=b;
     while (b != e)
